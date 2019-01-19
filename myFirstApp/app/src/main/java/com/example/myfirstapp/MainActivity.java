@@ -12,10 +12,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String balance = "50";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //set the layout
         final TextView balanceText = (TextView) findViewById(R.id.balance_field); //get the id for TextView
-        balanceText.setText("50");
+        balanceText.setText(balance);
     }
 
     public static void main(String [] args) {
