@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("Welcome to day " + day + "! Your current balance is $" + currentBalance);
                 System.out.print("How many burgers would you like to flip today?: ");
                 numBurgers = myScannerObj.nextInt();
-                System.out.println("You've made $" + calcBurgerMoney(numBurgers));
+                System.out.println("You've made $" + System.out.printf("%.2f", calcBurgerMoney(numBurgers)));
             }
 
 
