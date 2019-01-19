@@ -32,18 +32,23 @@ public class MainActivity extends AppCompatActivity {
 
         for (int day = 1; day < 31; day++)
         {
-            System.out.println("\nWelcome to day " + day + "! Your current balance is $" + currentBalance);
+            System.out.print("\nWelcome to day " + day + "! Your current balance is $");
+            System.out.printf("%.2f", currentBalance);
+            System.out.println();
 
             if (job.equals("burgerFlipper"))
             {
-                System.out.println("Welcome to day " + day + "! Your current balance is $" + currentBalance);
                 System.out.print("How many burgers would you like to flip today? (Please choose a # between 0-50 inclusive.): ");
                 numBurgers = myScannerObj.nextInt();
                 try {
                     if ((numBurgers > 0) && (numBurgers < 50)){
                         currentBalance += calcBurgerMoney(numBurgers);
-                        System.out.println("You've made $" + System.out.printf("%.2f", calcBurgerMoney(numBurgers)));
-                        System.out.println("Now your balance is $" + currentBalance);
+                        System.out.print("You've made $");
+                        System.out.printf("%.2f", calcBurgerMoney(numBurgers));
+                        System.out.println();
+                        System.out.print("Now your balance is $");
+                        System.out.printf("%.2f", currentBalance);
+                        System.out.println();
                         System.out.println("Phew! That was a tiring day of flipping burgers.");
                     }
                 }
