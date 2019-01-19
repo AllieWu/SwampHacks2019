@@ -14,8 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public static void main(String [] args)
-    {
+    public static void main(String [] args) {
         // REMEMBER TO ADD PERIODS
         Scanner myScannerObj = new Scanner(System.in);
         String charName;
@@ -32,93 +31,76 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("\nHello " + charName + "! Welcome to Rob's Burgers. Here you will begin your first job as a \nburger flipper. For each" +
                 " burger you flip you will earn $1.00, which is added \nto your balance. We'll start you off at $0.00. The daily living expense is $21.00.\n");
 
-        for (int day = 1; day < 31; day++)
-        {
+        for (int day = 1; day < 31; day++) {
             System.out.println("\nWelcome to day " + day + "! Your current balance is $" + currentBalance);
 
-            if (job.equals("burgerFlipper"))
-            {
+            if (job.equals("burgerFlipper")) {
                 System.out.print("How many burgers would you like to flip today? (Please choose a # between 0-50 inclusive.): ");
                 boolean eventFinished1 = false;
-                while (!eventFinished1)
-                {
+
+                while (!eventFinished1) {
                     numBurgers = myScannerObj.nextInt();
-                    try {
-                        if ((numBurgers >= 0) && (numBurgers <= 50))
-                        {
-                            currentBalance += calcBurgerMoney(numBurgers);
-                            System.out.print("You've made $");
-                            System.out.printf("%.2f", calcBurgerMoney(numBurgers));
-                            System.out.println();
-                            System.out.println("Now your balance is $" + currentBalance);
-                            System.out.println("Phew! That was a tiring day of flipping burgers.");
-                            eventFinished1 = true;
+
+                    if ((numBurgers >= 0) && (numBurgers <= 50)) {
+                        currentBalance += calcBurgerMoney(numBurgers);
+                        System.out.print("You've made $");
+                        System.out.printf("%.2f", calcBurgerMoney(numBurgers));
+                        System.out.println();
+                        System.out.println("Now your balance is $" + currentBalance);
+                        System.out.println("Phew! That was a tiring day of flipping burgers.");
+                        eventFinished1 = true;
+                        if (currentBalance >= 250.00) {
+                            job = "salesClerk";
+                            System.out.println("Congratulations! You've been promoted from burger flipper to sales clerk.");
                         }
+                    } else {
+                        System.out.print("Don't lie. That's not possible. Please choose a # between 0-50 inclusive: ");
                     }
-                    catch (InputMismatchException e ) {// We are simply gonna ask again
-                        System.out.println("Error: " + e.getMessage()); }
                 }
-                if (currentBalance >= 250.00)
-                {
-                    job = "salesClerk";
-                    System.out.println("Congratulations! You've been promoted from burger flipper to sales clerk.");
-                }
-            }
-            else if (job.equals("salesClerk"))
-            {
-                System.out.print("How many pieces of clothing would you like to flip today? (Please choose a # between 0-10 inclusive.): ");
+            } else if (job.equals("salesClerk")) {
+                System.out.print("How much clothing did you sell today? (Please choose a # between 0-10 inclusive.): ");
                 boolean eventFinished2 = false;
-                while (!eventFinished2)
-                {
+                while (!eventFinished2) {
                     numClothes = myScannerObj.nextInt();
-                    try {
-                        if ((numClothes >= 0) && (numClothes <= 10))
-                        {
-                            currentBalance += calcBurgerMoney(numClothes);
-                            System.out.println("You've made $");
-                            System.out.printf("%.2f", calcSalesClerkMoney(numClothes));
-                            System.out.println();
-                            System.out.println("Now your balance is $" + currentBalance);
-                            System.out.println("Phew! You've finished for the day!");
-                            eventFinished2 = true;
+
+                    if ((numClothes >= 0) && (numClothes <= 10)) {
+                        currentBalance += calcSalesClerkMoney(numClothes);
+                        System.out.print("You've made $");
+                        System.out.printf("%.2f", calcSalesClerkMoney(numClothes));
+                        System.out.println();
+                        System.out.println("Now your balance is $" + currentBalance);
+                        System.out.println("Phew! That was a tiring day of selling clothes.");
+                        eventFinished2 = true;
+                        if (currentBalance >= 1450.00) {
+                            job = "storeManager";
+                            System.out.println("Congratulations! You've been promoted from sales clerk to store manager.");
                         }
+                    } else {
+                        System.out.print("Don't lie. That's not possible. Please choose a # between 0-10 inclusive: ");
                     }
-                    catch (InputMismatchException e ) {// We are simply gonna ask again
-                        System.out.println("Error: " + e.getMessage()); }
                 }
-                if (currentBalance > 1450.00)
-                {
-                    job = "storeManager";
-                    System.out.println("Congratulations! You've been promoted from sales clerk to store manager.");
-                }
-            }
-            else if (job.equals("storeManager"))
-            {
-                System.out.print("How many hours would you like to work today? (Please choose a # between 0-8 inclusive.): ");
+            } else if (job.equals("storeManager")) {
+                System.out.print("How many hours did you work? (Please choose a # between 0-8 inclusive.): ");
                 boolean eventFinished3 = false;
-                while (!eventFinished3)
-                {
+                while (!eventFinished3) {
                     managerHours = myScannerObj.nextInt();
-                    try {
-                        if ((managerHours >= 0) && (managerHours <= 8))
-                        {
-                            currentBalance += calcBurgerMoney(managerHours);
-                            System.out.println("You've made $");
-                            System.out.printf("%.2f", calcSalesClerkMoney(managerHours));
-                            System.out.println();
-                            System.out.println("Now your balance is $" + currentBalance);
-                            System.out.println("Woo! Day done.");
-                            eventFinished3 = true;
-                        }
+
+                    if ((managerHours >= 0) && (managerHours <= 8)) {
+                        currentBalance += calcManagerWage(managerHours);
+                        System.out.print("You've made $");
+                        System.out.printf("%.2f", calcManagerWage(managerHours));
+                        System.out.println();
+                        System.out.println("Now your balance is $" + currentBalance);
+                        System.out.println("Phew! That was a tiring day of managing manager stuff.");
+                        eventFinished3 = true;
+                    } else {
+                        System.out.print("Don't lie. That's not possible. Please choose a # between 0-8 inclusive: ");
                     }
-                    catch (InputMismatchException e ) {// We are simply gonna ask again
-                        System.out.println("Error: " + e.getMessage()); }
                 }
             }
-            // end of for loop
-            currentBalance -= dailyLivingExpense;
-            System.out.println("You have spent " + dailyLivingExpense + ". Your new balance is " + currentBalance);
         }
+        currentBalance -= dailyLivingExpense;
+        System.out.println("You spent a daily expense of " + dailyLivingExpense + ". So your new balance is " + currentBalance);
     }
 
     public static double calcBurgerMoney(int numBurgers)
@@ -144,3 +126,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
