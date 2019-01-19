@@ -12,14 +12,26 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String balance = "50";
+        String balance = "Current Balance: ";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //set the layout
         final TextView balanceText = (TextView) findViewById(R.id.balance_field); //get the id for TextView
         balanceText.setText(balance);
+
+        String balanceNum = "0";
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); //set the layout
+        final TextView balanceNumberText = (TextView) findViewById(R.id.balanceNumber); //get the id for TextView
+        balanceText.setText(balanceNum);
     }
 
-    public static void main(String [] args) {
+    // Function to update the text of the current balance number
+    public void updateTextView(String toThis) {
+        TextView textView = (TextView) findViewById(R.id.balanceNumber);
+        textView.setText(toThis);
+    }
+
+    public void main(String [] args) {
 
         // REMEMBER TO ADD PERIODS
         Scanner myScannerObj = new Scanner(System.in);
@@ -39,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int day = 1; day < 31; day++) {
             System.out.println("\nWelcome to day " + day + "! Your current balance is $" + currentBalance);
+            updateTextView(Double.toString(currentBalance));
 
             if (job.equals("burgerFlipper")) {
                 System.out.print("How many burgers would you like to flip today? (Please choose a # between 0-50 inclusive.): ");
