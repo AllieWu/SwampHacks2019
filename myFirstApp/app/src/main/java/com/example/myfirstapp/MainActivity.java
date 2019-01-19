@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
             if (job.equals("burgerFlipper"))
             {
-                System.out.println("Welcome to day " + day + "! Your current balance is $" + currentBalance);
                 System.out.print("How many burgers would you like to flip today? (Please choose a # between 0-50 inclusive.): ");
                 numBurgers = myScannerObj.nextInt();
                 boolean eventFinished = false;
@@ -48,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
                         if ((numBurgers >= 0) && (numBurgers <= 50))
                         {
                             currentBalance += calcBurgerMoney(numBurgers);
-                            System.out.println("You've made $" + System.out.printf("%.2f", calcBurgerMoney(numBurgers)));
+                            System.out.print("You've made $");
+                            System.out.printf("%.2f", calcBurgerMoney(numBurgers));
+                            System.out.println();
                             System.out.println("Now your balance is $" + currentBalance);
                             System.out.println("Phew! That was a tiring day of flipping burgers.");
                             eventFinished = true;
@@ -65,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             }
             else if (job.equals("salesClerk"))
             {
-                System.out.println("Welcome to day " + day + "! Your current balance is $" + currentBalance);
                 System.out.print("How many pieces of clothing would you like to flip today? (Please choose a # between 0-10 inclusive.): ");
                 numClothes = myScannerObj.nextInt();
                 boolean eventFinished = false;
@@ -75,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
                         if ((numClothes >= 0) && (numClothes <= 10))
                         {
                             currentBalance += calcBurgerMoney(numClothes);
-                            System.out.println("You've made $" + System.out.printf("%.2f", calcSalesClerkMoney(numClothes)));
+                            System.out.println("You've made $");
+                            System.out.printf("%.2f", calcSalesClerkMoney(numClothes));
+                            System.out.println();
                             System.out.println("Now your balance is $" + currentBalance);
                             System.out.println("Phew! You've finished for the day!");
                             eventFinished = true;
@@ -92,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
             }
             else if (job.equals("storeManager"))
             {
-                System.out.println("Welcome to day " + day + "! Your current balance is $" + currentBalance);
                 System.out.print("How many hours would you like to work today? (Please choose a # between 0-8 inclusive.): ");
                 managerHours = myScannerObj.nextInt();
                 boolean eventFinished = false;
@@ -102,7 +103,9 @@ public class MainActivity extends AppCompatActivity {
                         if ((managerHours >= 0) && (managerHours <= 8))
                         {
                             currentBalance += calcBurgerMoney(managerHours);
-                            System.out.println("You've made $" + System.out.printf("%.2f", calcSalesClerkMoney(managerHours)));
+                            System.out.println("You've made $");
+                            System.out.printf("%.2f", calcSalesClerkMoney(managerHours));
+                            System.out.println();
                             System.out.println("Now your balance is $" + currentBalance);
                             System.out.println("Woo! Day done.");
                             eventFinished = true;
@@ -112,8 +115,10 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println("Error: " + e.getMessage()); }
                 }
             }
+            // end of for loop
+            currentBalance -= dailyLivingExpense;
+            System.out.println("You have spent " + dailyLivingExpense + ". Your new balance is " + currentBalance);
         }
-
     }
 
     public static double calcBurgerMoney(int numBurgers)
