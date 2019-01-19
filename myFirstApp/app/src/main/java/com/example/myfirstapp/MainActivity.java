@@ -6,22 +6,21 @@ import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 
-    /*@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }*/
+    }
 
     public static void main(String [] args)
     {
+        // REMEMBER TO ADD PERIODS
         Scanner myScannerObj = new Scanner(System.in);
         String charName;
         double currentBalance = 0.00;
         double dailyLivingExpense = 21.00;
         int numBurgers;
         String job = "burgerFlipper";
-
-
 
         System.out.println("Welcome to Money Matters! The game where you learn to manage your money. \n");
         System.out.print("Please enter a name for your character: ");
@@ -31,12 +30,31 @@ public class MainActivity extends AppCompatActivity {
 
         for (int day = 1; day < 31; day++)
         {
+            System.out.println("\nWelcome to day " + day + "! Your current balance is $" + currentBalance);
+
             if (job.equals("burgerFlipper"))
             {
                 System.out.println("Welcome to day " + day + "! Your current balance is $" + currentBalance);
-                System.out.print("How many burgers would you like to flip today?: ");
+                System.out.print("How many burgers would you like to flip today? (Please choose a # between 0-50 inclusive.): ");
                 numBurgers = myScannerObj.nextInt();
+                ////******************************************
+                currentBalance += calcBurgerMoney(numBurgers);
                 System.out.println("You've made $" + System.out.printf("%.2f", calcBurgerMoney(numBurgers)));
+                System.out.println("Now your balance is $" + currentBalance);
+                System.out.println("Phew! That was a tiring day of flipping burgers.");
+                if (currentBalance > 250.00)
+                {
+                    job = "salesClerk";
+                    System.out.println("Congratulations! You've been promoted from burger flipper to sales clerk.");
+                }
+            }
+            else if (job.equals("salesClerk"))
+            {
+
+            }
+            else if (job.equals("storeManager"))
+            {
+
             }
 
 
