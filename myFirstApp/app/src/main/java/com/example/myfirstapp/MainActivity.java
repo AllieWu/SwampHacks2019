@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
             if (job.equals("burgerFlipper"))
             {
                 System.out.print("How many burgers would you like to flip today? (Please choose a # between 0-50 inclusive.): ");
-                boolean eventFinished = false;
-                while (!eventFinished)
+                boolean eventFinished1 = false;
+                while (!eventFinished1)
                 {
                     numBurgers = myScannerObj.nextInt();
                     try {
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println();
                             System.out.println("Now your balance is $" + currentBalance);
                             System.out.println("Phew! That was a tiring day of flipping burgers.");
-                            eventFinished = true;
+                            eventFinished1 = true;
                         }
                     }
                     catch (InputMismatchException e ) {// We are simply gonna ask again
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
             else if (job.equals("salesClerk"))
             {
                 System.out.print("How many pieces of clothing would you like to flip today? (Please choose a # between 0-10 inclusive.): ");
-                boolean eventFinished = false;
-                while (!eventFinished)
+                boolean eventFinished2 = false;
+                while (!eventFinished2)
                 {
                     numClothes = myScannerObj.nextInt();
                     try {
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println();
                             System.out.println("Now your balance is $" + currentBalance);
                             System.out.println("Phew! You've finished for the day!");
-                            eventFinished = true;
+                            eventFinished2 = true;
                         }
                     }
                     catch (InputMismatchException e ) {// We are simply gonna ask again
@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
             else if (job.equals("storeManager"))
             {
                 System.out.print("How many hours would you like to work today? (Please choose a # between 0-8 inclusive.): ");
-                boolean eventFinished = false;
-                while (!eventFinished)
+                boolean eventFinished3 = false;
+                while (!eventFinished3)
                 {
                     managerHours = myScannerObj.nextInt();
                     try {
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println();
                             System.out.println("Now your balance is $" + currentBalance);
                             System.out.println("Woo! Day done.");
-                            eventFinished = true;
+                            eventFinished3 = true;
                         }
                     }
                     catch (InputMismatchException e ) {// We are simply gonna ask again
