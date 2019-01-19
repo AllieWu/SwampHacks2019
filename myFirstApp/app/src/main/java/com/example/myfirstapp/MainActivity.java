@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
             if (job.equals("burgerFlipper"))
             {
                 System.out.print("How many burgers would you like to flip today? (Please choose a # between 0-50 inclusive.): ");
-                numBurgers = myScannerObj.nextInt();
                 boolean eventFinished = false;
                 while (!eventFinished)
                 {
+                    numBurgers = myScannerObj.nextInt();
                     try {
                         if ((numBurgers >= 0) && (numBurgers <= 50))
                         {
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     catch (InputMismatchException e ) {// We are simply gonna ask again
                         System.out.println("Error: " + e.getMessage()); }
                 }
-                if (currentBalance > 250.00)
+                if (currentBalance >= 250.00)
                 {
                     job = "salesClerk";
                     System.out.println("Congratulations! You've been promoted from burger flipper to sales clerk.");
@@ -67,10 +67,10 @@ public class MainActivity extends AppCompatActivity {
             else if (job.equals("salesClerk"))
             {
                 System.out.print("How many pieces of clothing would you like to flip today? (Please choose a # between 0-10 inclusive.): ");
-                numClothes = myScannerObj.nextInt();
                 boolean eventFinished = false;
                 while (!eventFinished)
                 {
+                    numClothes = myScannerObj.nextInt();
                     try {
                         if ((numClothes >= 0) && (numClothes <= 10))
                         {
@@ -95,10 +95,10 @@ public class MainActivity extends AppCompatActivity {
             else if (job.equals("storeManager"))
             {
                 System.out.print("How many hours would you like to work today? (Please choose a # between 0-8 inclusive.): ");
-                managerHours = myScannerObj.nextInt();
                 boolean eventFinished = false;
                 while (!eventFinished)
                 {
+                    managerHours = myScannerObj.nextInt();
                     try {
                         if ((managerHours >= 0) && (managerHours <= 8))
                         {
