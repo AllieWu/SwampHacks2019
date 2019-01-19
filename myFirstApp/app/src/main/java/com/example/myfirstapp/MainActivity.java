@@ -39,16 +39,23 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("Welcome to day " + day + "! Your current balance is $" + currentBalance);
                 System.out.print("How many burgers would you like to flip today? (Please choose a # between 0-50 inclusive.): ");
                 numBurgers = myScannerObj.nextInt();
-                try {
-                    if ((numBurgers > 0) && (numBurgers < 50)){
-                        currentBalance += calcBurgerMoney(numBurgers);
-                        System.out.println("You've made $" + System.out.printf("%.2f", calcBurgerMoney(numBurgers)));
-                        System.out.println("Now your balance is $" + currentBalance);
-                        System.out.println("Phew! That was a tiring day of flipping burgers.");
+                boolean eventFinished = false;
+                while (!eventFinished)
+                {
+                    try {
+                        if ((numBurgers > 0) && (numBurgers < 50))
+                        {
+                            currentBalance += calcBurgerMoney(numBurgers);
+                            System.out.println("You've made $" + System.out.printf("%.2f", calcBurgerMoney(numBurgers)));
+                            System.out.println("Now your balance is $" + currentBalance);
+                            System.out.println("Phew! That was a tiring day of flipping burgers.");
+                            eventFinished = true;
+                        }
                     }
+                    catch (InputMismatchException e ) {// We are simply gonna ask again
+                        System.out.println("Error: " + e.getMessage()); }
                 }
-                catch (InputMismatchException e ) {// We are simply gonna ask again
-                    System.out.println("Error: " + e.getMessage()); }
+
 
                 if (currentBalance > 250.00)
                 {
