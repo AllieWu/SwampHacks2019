@@ -2,6 +2,8 @@ package com.example.myfirstapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,10 +13,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); //set the layout
+        final TextView balanceText = (TextView) findViewById(R.id.balance_field); //get the id for TextView
+        balanceText.setText("50");
     }
 
     public static void main(String [] args) {
+
         // REMEMBER TO ADD PERIODS
         Scanner myScannerObj = new Scanner(System.in);
         String charName;
@@ -120,9 +125,6 @@ public class MainActivity extends AppCompatActivity {
         double totalManagerWage = managerHoursWorked * 30.00;
         return totalManagerWage;
     }
-
-
-
 
 
 }
